@@ -205,14 +205,16 @@
   <script>
     shiki
       .getHighlighter({
-        theme: 'nord'
+        theme: matchMedia("(prefers-color-scheme: light)").matches
+          ? 'github-light'
+          : 'github-dark'
       })
       .then(highlighter => {
         document.querySelectorAll('pre').forEach(element => {
           const language = element.dataset.lang || 'js';
           const code = highlighter.codeToHtml(element.innerText, language);
-          element.innerHTML = code
-        })
+          element.innerHTML = code;
+        });
       })
   </script>
 </bdy>

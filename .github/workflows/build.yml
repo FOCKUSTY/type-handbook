@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  frontend:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,8 +25,9 @@ jobs:
         run: npm install
 
       - name: "Building..."
-        run: |
-          npm run start
+        run: npm run start
+        env:
+          NODE_ENV: production
         continue-on-error: false
 
       - name: Save Changes ⇒ Commit builded code

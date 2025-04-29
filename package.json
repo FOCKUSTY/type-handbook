@@ -1,0 +1,20 @@
+{
+  "name": "type-handbook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "destroy": "set NODE_ENV=destroy&& node .",
+    "dev": "set NODE_ENV=development&& node .",
+    "start": "set NODE_ENV=production&& node ."
+  },
+  "author": {
+    "name": "FOCKUSTY",
+    "email": "viserd.yt@gmail.com",
+    "url": "https://github.com/FOCKUSTY"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "showdown": "^2.1.0"
+  }
+}

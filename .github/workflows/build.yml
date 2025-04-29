@@ -28,6 +28,7 @@ jobs:
         run: npm run start
         env:
           NODE_ENV: production
+          URL_PREFIX: https://fockusty.github.io/type-handbook
         continue-on-error: false
 
       - name: Save Changes ⇒ Commit builded code

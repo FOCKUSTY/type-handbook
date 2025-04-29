@@ -6,6 +6,7 @@ const showdown = require('showdown'),
 
 const resolve = (path = "./", ...paths) => join(path, ...paths);
 
+const URL_PREFIX = process.env.URL_PREFIX || "";
 const EXAMPLE_HTML_FILE = readFileSync(resolve("./example.html"), "utf-8");
 const HTML_CONSTANTS = {
   title: "{{ HTML TITLE }}",
@@ -87,7 +88,7 @@ const getAllHtmlFilesInLinks = () => {
   const data = mapObject(paths, ({ value, prefix }) => `${prefix}${value}`.replace(".md", ".html") );
 
   return `<ul>${data.map(
-    name => `<li><a href="/type-handbook/${name.replaceAll(" ", "%20")}">${name.replace(".html", "")}<a></li>`
+    name => `<li><a href="${URL_PREFIX}/${name.replaceAll(" ", "%20")}">${name.replace(".html", "")}<a></li>`
   ).join("\n")}</ul>`;
 }
 
@@ -95,7 +96,7 @@ const pasteHtml = (html = "", path = "") => {
   let file = `${EXAMPLE_HTML_FILE}`;
   
   file = file.replace(HTML_CONSTANTS.title, parse(path).name);
-  file = file.replace(HTML_CONSTANTS.body, html.replaceAll("href=\"/", "href=\"/type-handbook/"));
+  file = file.replace(HTML_CONSTANTS.body, html.replaceAll("href=\"/", `href="${URL_PREFIX}/`));
   file = file.replace(HTML_CONSTANTS.allFiles, getAllHtmlFilesInLinks())
   file = file.replaceAll(".md", ".html");
   

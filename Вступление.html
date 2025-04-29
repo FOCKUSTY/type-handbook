@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg-modal-color: #12121263;
+      --content-modal-color: #0b0b0b;
+
+      --text-color: #ffffff;
+      --bg-color: #000000;
+
+      --main-color: #161616;
+      --section-color: #272727;
+
+      --component-color: #131313;
+      --shadow-color: #1f1f1f;
+
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+      --code-font: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --text-color: #000000;
+        --bg-color: #ffffff;
+
+        --main-color: #e6e6e6;
+        --section-color: #ffffff;
+
+        --component-color: #e9e9e9;
+        --shadow-color: #c4c4c4;
+      }
+    }
+
+    #root {
+      padding: 1em 1.5em;
+
+      height: 100%;
+      width: 100%;
+    }
+
+    #show_all_files, #all_files {
+      position: absolute;
+      
+      right: 0;
+      top: 0;
+    }
+
+    #show_all_files {
+      z-index: 1000;
+    }
+
+    #all_files {
+      overflow-y: auto;
+
+      max-height: min(20%, 5em);
+
+      margin: 0.25em 0.5em;
+      padding: 0.5em 1em;
+
+      border-radius: 20px;
+      background-color: var(--section-color);
+      z-index: 999;
+    }
+
+    html,
+    body {
+      margin: 0;
+
+      height: 100%;
+
+      color: var(--text-color);
+      background-color: var(--bg-color);
+
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      *::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      *::-webkit-scrollbar-track {
+        background: #353535;
+        border-radius: 10px;
+      }
+
+      *::-webkit-scrollbar-thumb {
+        background-color: #1d1d1d;
+        border-radius: 10px;
+        border: 3px solid #121212;
+      }
+    }
+
+    * {
+      font-family: var(--font);
+      box-sizing: border-box;
+
+      color: var(--text-color);
+      transition: 0.75s;
+    }
+
+    button {
+      border: 0;
+  
+      padding: 5px 15px;
+      border-radius: 10px;
+  
+      background-color: var(--bg-color);
+      cursor: pointer;
+    }
+
+    p {
+      padding: 0.25em 0.5em;
+    }
+
+    pre {
+      display: block;
+      border-radius: 20px;
+      padding: 0.5em 1em;
+
+      width: calc(100% - 1em);
+      overflow-x: auto;
+    }
+
+    code {
+      overflow-x: auto;
+      border-radius: 10px;
+      padding: 0 0.4em;
+    }
+
+    pre, code {
+      position: relative;
+      background-color: var(--section-color);
+      font-family: var(--code-font);
+
+      line-height: calc(100% + 0.25em);
+    }
+
+    .page {
+      height: 100%;
+    }
+
+    @media screen and (width < 600px) {
+      h1 {
+        font-size: 24px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      h3 {
+        font-size: 14px;
+      }
+
+      * {
+        font-size: 12px;
+      }
+    }
+  </style>
+  <title>Вступление</title>
+</head>
+<body>
+  <button id="show_all_files">Hide navigation</button>
+  <nav id="all_files">
+    <ul><li><a href="/Вступление.html">Вступление<a></li>
+<li><a href="/Начало%20типизации/Дженерики%20(Generics).html">Начало типизации/Дженерики (Generics)<a></li>
+<li><a href="/Начало%20типизации/Ежедневные%20типы.html">Начало типизации/Ежедневные типы<a></li>
+<li><a href="/Начало%20типизации/Начало%20-%20вступление.html">Начало типизации/Начало - вступление<a></li>
+<li><a href="/Начало%20типизации/Создание%20своих%20типов.html">Начало типизации/Создание своих типов<a></li>
+<li><a href="/Начало%20типизации/Типы%20в%20функциях.html">Начало типизации/Типы в функциях<a></li></ul>
+  </nav>
+
+  <div id="root">
+    <p>Это небольшая карманная книга по TypeScript. Я — FOCKUSTY, постараюсь научить Вас писать типы и понимать их. На языке TypeScript на момент 2025 года 16 апреля я уже где-то год, и, вроде как, хорошо понимаю типизацию.
+    Эта книга для тех, кто также не понимает оригинальную книгу от TypeScript. Здесь я постараюсь объяснить всё простыми и понятными словами, иногда обращаясь к оригинальной книге: https://www.typescriptlang.org/docs/handbook/intro.html
+В этой книге я не буду говорить, почему типизация так важна, думаю, что Вы итак это знаете, раз переключились на TypeScript. Так что я просто буду рассказывать, как указывать типы и какие махинации можно с ними проводить.
+    Хочется сказать, что я буду рассказывать обо всё не по порядку, а брать информацию изо всех источников "типизации".</p>
+<ul>
+<li>Приступим к навигации:<ul>
+<li><a href="Начало%20типизации/Вступление.html">Вступление</a></li>
+<li><a href="Ежедневные%20типы.html">Ежедневные типы</a></li></ul></li>
+</ul>
+  </div>
+
+  <script>
+    document.getElementById("show_all_files").onclick = (event) => {
+      if (document.getElementById("show_all_files").innerText === "Hide navigation") {
+        document.getElementById("show_all_files").innerText = "Show navigation";
+        document.getElementById("all_files").style.display = "none";
+      } else {
+        document.getElementById("show_all_files").innerText = "Hide navigation";
+        document.getElementById("all_files").style.display = "block";
+      };
+    }
+  </script>
+</body>
+</html>

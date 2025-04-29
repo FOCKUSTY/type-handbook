@@ -36,5 +36,6 @@ jobs:
           git config --global user.email '${{ github.event.head_commit.author.username }}@${{ github.event.head_commit.author.email }}'
           git add .
           git commit -m '${{ github.event.head_commit.message }} (build html files)'
+          git fetch
           git push origin main:gh-pages
         continue-on-error: true

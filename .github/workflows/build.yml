@@ -37,6 +37,5 @@ jobs:
           git add .
           git commit -m '${{ github.event.head_commit.message }} (build html files)'
           git fetch
-          git pull
-          git push origin main:gh-pages
+          git push -f origin main:gh-pages
         continue-on-error: true

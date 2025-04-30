@@ -2,11 +2,13 @@
   "name": "type-handbook",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
+    "style": "prettier --write ./**/*.html",
     "destroy": "set NODE_ENV=destroy&& node .",
     "dev": "set NODE_ENV=development&& node .",
-    "start": "set NODE_ENV=production&& node ."
+    "build": "set NODE_ENV=production&& node .",
+    "start": "npm run build && npm run style"
   },
   "author": {
     "name": "FOCKUSTY",
@@ -15,6 +17,9 @@
   },
   "license": "MIT",
   "dependencies": {
+    "jsdom": "^26.1.0",
+    "prettier": "^3.5.3",
+    "shiki": "0.9.10",
     "showdown": "^2.1.0"
   }
 }

@@ -18,7 +18,7 @@ const HTML_CONSTANTS = {
   body: "{{ HTML BODY }}",
   style: "{{ CSS STYLE }}"
 };
-const EXCLUDE = ["node_modules", ".git", ".obsidian"];
+const EXCLUDE = ["node_modules", ".git", ".obsidian", ".github"];
 const FILE_FORMAT = ".md";
 
 (async () => {

@@ -59,7 +59,7 @@
 
   overflow-y: auto;
 
-  max-height: min(20%, 5em);
+  max-height: min(50%, 10em);
 
   margin: 0.25em 0.5em;
   padding: 0.5em 1em;

@@ -8,7 +8,7 @@
     "style": "prettier --write ./**/*.html",
     "destroy": "set NODE_ENV=destroy&& node .",
     "dev": "set NODE_ENV=development&& ts-node ./index.js",
-    "build": "set NODE_ENV=production&& node .",
+    "build": "tsc && set NODE_ENV=production&& node .",
     "start": "npm run build && npm run style"
   },
   "author": {

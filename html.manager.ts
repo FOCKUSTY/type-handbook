@@ -49,6 +49,7 @@ export class HtmlManager {
 
 	private ParseHtml() {
 		return `${EXAMPLE_HTML_FILE}`
+      .replaceAll('href="/', `href="${URL_PREFIX}/`)
 			.replace(HTML_CONSTANTS.title, parse(this.mdPath).name)
 			.replace(
 				HTML_CONSTANTS.body,

@@ -1,3 +1,7 @@
+import { config } from "dotenv";
+
+config();
+
 import { HtmlManager } from "./html.manager.js";
 import { FileManager } from "./file.manager.js";
 

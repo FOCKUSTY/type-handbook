@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, rmSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, rmSync } from "node:fs";
 
 import {
 	resolvePath as resolve,
@@ -9,6 +9,7 @@ import {
 } from "./constants.js";
 
 import showdown from "showdown";
+import e from "express";
 const converter = new showdown.Converter();
 
 type Dirs = {
@@ -28,7 +29,9 @@ export class FileManager {
 	}
 
 	public static deleteFiles = (paths: string[]) => {
-		paths.forEach((p) => rmSync(p));
+		paths.forEach((p) => {
+			if (existsSync(p)) rmSync(p);
+		});
 	};
 
 	public readDirWithDirs(path: string = this.dir, dirs: Dirs = {}) {

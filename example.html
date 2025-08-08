@@ -10,11 +10,21 @@
 		<script src="https://unpkg.com/shiki@0.9.10/dist/index.unpkg.iife.js"></script>
 
 		<button id="show_all_files">Show navigation</button>
-		<nav id="all_files">{{ HTML ALL FILES }}</nav>
+		<nav id="all_files">
+			{{ HTML ALL FILES }}
+		</nav>
 		
 		<div id="root">
 			{{ HTML BODY }}
 		</div>
+
+		<script>
+			const dropdownOnClick = (id) => {
+				const element = document.getElementById(`${id}`);
+				element.style.display = element.style.display === "none"
+					? "flex" : "none";
+			}
+		</script>
 
 		<script>
 			document.getElementById("show_all_files").onclick = (event) => {

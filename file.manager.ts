@@ -5,7 +5,8 @@ import {
 	mapObject,
 	EXCLUDE,
 	FILE_FORMAT,
-	URL_PREFIX
+	URL_PREFIX,
+	ulMapObject
 } from "./constants.js";
 
 import showdown from "showdown";
@@ -88,18 +89,14 @@ export class FileManager {
 
 	public getAllHtmlFilesInLinks() {
 		const dirs = this.readDirWithDirs();
-		const data = mapObject<string, Dirs>(dirs, ({ value, prefix }) =>
-			`${prefix}${value}`.replace(".md", ".html")
-		);
 
-		return `<ul>
-      ${data
-			.map(
-				(name) =>
-					`<li><a href="${URL_PREFIX}/${name.replaceAll(" ", "%20")}">${name.replace(".html", "")}<a></li>`
-			)
-			.join("\n")}
-    </ul>`;
+		const data = ulMapObject<string, Dirs>(dirs, ({ value, prefix }) => {
+			return `${prefix}${value}`.replace(".md", ".html");
+		});
+
+		return `<div>
+		${data}
+    </div>`;
 	}
 
 	public get dirs() {

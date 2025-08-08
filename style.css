@@ -61,12 +61,31 @@
 
   max-height: min(50%, 10em);
 
-  margin: 0.25em 0.5em;
+  margin: 2em 0.5em;
   padding: 0.5em 1em;
 
   border-radius: 20px;
   background-color: var(--section-color);
   z-index: 999;
+}
+
+.dropdown .dropdown_summary {
+  background-color: var(--bg-color);
+  
+  border-radius: 0.5em;
+  padding: 0 0.5em;
+  
+  cursor: pointer;
+}
+
+.dropdown .dropdown_content {
+  padding: 0 0.5em;
+
+  flex-direction: column;
+}
+
+.dropdown .dropdown_content::before {
+  content: "";
 }
 
 html,

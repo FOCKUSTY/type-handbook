@@ -172,6 +172,17 @@ pre code {
   height: 100%;
 }
 
+.copy {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  top: 0;
+  right: 0;
+  margin: 2em;
+  max-height: 50px;
+  max-width: 50px;
+}
+
 @media screen and (width < 600px) {
   h1 {
     font-size: 24px;

@@ -18,6 +18,43 @@
 			{{ HTML BODY }}
 		</div>
 
+		<div id="copy-element" style="display: none;">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"/><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"/></g></svg>
+		</div>
+
+		<div id="copy-div" style="position: fixed; display: none; transition: 0.3s; width: 100%; text-align: center;">copiend!</div>
+
+		<script>
+			const copyDiv = document.getElementById("copy-div");
+			
+			document.querySelectorAll("code").forEach(element => {
+				element.style.cursor = "pointer";
+				copyDiv.style.bottom = "0";
+			  
+				const parent = element.getBoundingClientRect();
+				
+				element.onclick = () => {
+					if (element.parentElement.className === "shiki") return;
+
+					copyDiv.style.display = "block";
+					copyDiv.style.transition = "0.5s";
+
+					copyDiv.style.opacity = "1";
+
+					setTimeout(() => {
+						copyDiv.style.opacity = "0";
+
+						setTimeout(() => {
+							copyDiv.style.display = "none";
+							copyDiv.style.transition = "0s";
+						}, 300);
+					}, 300);
+
+					navigator.clipboard.writeText(element.innerText);
+				}
+			})
+		</script>
+
 		<script>
 			const dropdownOnClick = (id) => {
 				const element = document.getElementById(`${id}`);
@@ -44,6 +81,8 @@
 		</script>
 
 		<script>
+			const copy = document.getElementById("copy-element");
+
 			shiki
 				.getHighlighter({
 					theme: matchMedia("(prefers-color-scheme: light)").matches
@@ -52,9 +91,34 @@
 				})
 				.then((highlighter) => {
 					document.querySelectorAll("pre").forEach((element) => {
+						const div = document.createElement("div")
+						
+						div.className = "copy";
+						div.innerHTML = copy.innerHTML;
+
 						const language = element.dataset.lang || "js";
 						const code = highlighter.codeToHtml(element.innerText, language);
+
+						div.onclick = () => {
+							copyDiv.style.display = "block";
+							copyDiv.style.transition = "0.5s";
+
+							copyDiv.style.opacity = "1";
+
+							setTimeout(() => {
+								copyDiv.style.opacity = "0";
+
+								setTimeout(() => {
+									copyDiv.style.display = "none";
+									copyDiv.style.transition = "0s";
+								}, 300);
+							}, 300);
+
+							navigator.clipboard.writeText(element.innerText);
+						}
+
 						element.innerHTML = code;
+						element.appendChild(div);
 					});
 				});
 		</script>

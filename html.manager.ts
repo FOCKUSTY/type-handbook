@@ -36,12 +36,36 @@ export class HtmlManager {
 		this.document.window.document
 			.querySelectorAll("pre")
 			.forEach((element: HTMLElement) => {
+				const div = element.ownerDocument.createElement("div")
+				const copyDiv = element.ownerDocument.getElementById("copy-div") as HTMLElement;
 				const language = element.children[0].className.split(" ")[0];
+				const copy = element.ownerDocument.getElementById("copy-element");
+
+				div.className = "copy";
+				div.innerHTML = copy?.innerHTML || "";
 
 				if (!element.textContent) return;
 
+				div.onclick = () => {
+					copyDiv.style.display = "block";
+					copyDiv.style.transition = "0.5s";
+
+					copyDiv.style.opacity = "1";
+
+					setTimeout(() => {
+						copyDiv.style.opacity = "0";
+
+						setTimeout(() => {
+							copyDiv.style.display = "none";
+							copyDiv.style.transition = "0s";
+						}, 300);
+					}, 300)
+				};
+
 				const code = this.highlighter.codeToHtml(element.textContent, language);
+				
 				element.innerHTML = code;
+				element.appendChild(div);
 			});
 
 		return this, this.document.window.document.documentElement.innerHTML;

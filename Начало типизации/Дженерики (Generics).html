@@ -1,0 +1,325 @@
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+:root {
+  --bg-modal-color: #12121263;
+  --content-modal-color: #0b0b0b;
+
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  --code-font: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  
+  --text-color: #ffffff;
+  --bg-color: #000000;
+  
+  --main-color: #161616;
+  --section-color: #272727;
+  
+  --scroll-bar-background: #353535;
+  --scroll-thumb-background: #1d1d1d;
+  --scroll-thum-border: 3px solid #121212;
+
+  --component-color: #131313;
+  --shadow-color: #1f1f1f;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-color: #000000;
+    --bg-color: #ffffff;
+
+    --main-color: #e6e6e6;
+    --section-color: #ffffff;
+
+    --scroll-bar-background: #353535;
+    --scroll-thumb-background: #adadad;
+    --scroll-thum-border: 3px solid #444444;
+
+    --component-color: #e9e9e9;
+    --shadow-color: #c4c4c4;
+  }
+}
+
+#root {
+  padding: 1em 1.5em;
+
+  height: 100%;
+  width: 100%;
+}
+
+#show_all_files, #all_files {
+  position: fixed;
+  
+  right: 0;
+  top: 0;
+}
+
+#show_all_files {
+  z-index: 1000;
+}
+
+#all_files {
+  display: none;
+
+  overflow-y: auto;
+
+  max-height: min(50%, 10em);
+
+  margin: 0.25em 0.5em;
+  padding: 0.5em 1em;
+
+  border-radius: 20px;
+  background-color: var(--section-color);
+  z-index: 999;
+}
+
+html,
+body {
+  margin: 0;
+
+  height: 100%;
+
+  color: var(--text-color);
+  background-color: var(--bg-color);
+
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--scroll-bar-background);
+    border-radius: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb-background);
+    border-radius: 10px;
+    border: var(--scroll-thum-border);
+  }
+}
+
+* {
+  font-family: var(--font);
+  box-sizing: border-box;
+
+  color: var(--text-color);
+  transition: 0.75s;
+}
+
+button {
+  border: 0;
+
+  padding: 5px 15px;
+  border-radius: 10px;
+
+  background-color: var(--bg-color);
+  cursor: pointer;
+}
+
+p {
+  padding: 0.25em 0.5em;
+}
+
+pre {
+  display: block;
+  border-radius: 20px;
+  padding: 0.5em 1em;
+
+  width: calc(100% - 1em);
+  overflow-x: auto;
+}
+
+code {
+  overflow-x: auto;
+  border-radius: 10px;
+  padding: 0 0.4em;
+  
+  background-color: var(--section-color);
+  font-family: var(--code-font);
+}
+
+pre, code {
+  position: relative;
+  line-height: calc(100% + 0.33em);
+}
+
+pre code {
+  background-color: inherit;
+  font-family: inherit;
+  padding: 0;
+}
+
+.page {
+  height: 100%;
+}
+
+@media screen and (width < 600px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  * {
+    font-size: 16px;
+  }
+}
+</style>
+		<title>Дженерики (Generics)</title>
+	</head>
+	<body>
+		<script src="https://unpkg.com/shiki@0.9.10/dist/index.unpkg.iife.js"></script>
+
+		<button id="show_all_files">Show navigation</button>
+		<nav id="all_files"><ul>
+      <li><a href="/D:/projects/me/type-handbook/Вступление.html">Вступление</a><a></a></li><a>
+</a><li><a></a><a href="/D:/projects/me/type-handbook/Начало%20типизации/Дженерики%20(Generics).html">Начало типизации/Дженерики (Generics)</a><a></a></li><a>
+</a><li><a></a><a href="/D:/projects/me/type-handbook/Начало%20типизации/Ежедневные%20типы.html">Начало типизации/Ежедневные типы</a><a></a></li><a>
+</a><li><a></a><a href="/D:/projects/me/type-handbook/Начало%20типизации/Начало%20-%20вступление.html">Начало типизации/Начало - вступление</a><a></a></li><a>
+</a><li><a></a><a href="/D:/projects/me/type-handbook/Начало%20типизации/Создание%20своих%20типов.html">Начало типизации/Создание своих типов</a><a></a></li><a>
+</a><li><a></a><a href="/D:/projects/me/type-handbook/Начало%20типизации/Типы%20в%20функциях.html">Начало типизации/Типы в функциях</a><a></a></li><a>
+    </a></ul></nav><a>
+		
+		</a><div id="root"><a>
+			<p>Дженерик — условные тип, который может определять значения других. Считайте, что дженерик — это аргумент для типа, например, как в функции. Рассмотрим пару примеров. К слову, я уже упоминал, когда говорил о типах массива, первые пример будет на нём:</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">array</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Array</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> [</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">"Hello"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">","</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">" "</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"World"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"!"</span></span>
+<span class="line"><span style="color: #C9D1D9">];</span></span>
+<span class="line"></span></code></pre></pre>
+<p>Разберём тип <code>Array&lt;string&gt;</code>, а точнее то, что написано в стрелках. Кстати, воспринимайте стрелки как скобки в функциях, а всё то, что написано в них как аргументы, Вам, возможно, будет проще так воспринимать дженерики. Итак, тип <code>string</code> в типе <code>Array</code> говорит нам, что он расширяет тип <code>Array</code>, делая из него массив строк. Также можно написать <code>Array&lt;Array&lt;string&gt;&gt;</code>, тогда это будет вложенный массив строк в массиве. То есть <code>[["string"]]</code>.</p>
+<h1 id="">Дженерики в своих типах</h1>
+</a><p><a>Желательно знать про </a><a href="./Создание%20своих%20типов.html">создание своих типов</a>.
+Итак, дженерик — это что-то в роде аргумента в функции, но только как тип. Рассмотрим простые примеры.</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #8B949E">// Пример 1</span></span>
+<span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Foo</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">foo</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Foo</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">"123"</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #8B949E">// type foo: string</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E">// Пример 2</span></span>
+<span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Foo</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> { [</span><span style="color: #FFA657">key</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">]</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span><span style="color: #C9D1D9"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">foo</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Foo</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Array</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">&gt;&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    bar1: [</span><span style="color: #A5D6FF">"asd"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"qwe"</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">    bar2: []</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"><span style="color: #8B949E">// type foo: object</span></span>
+<span class="line"></span></code></pre></pre>
+<p>В повседневном использовании, как я думаю, не должно возникнуть вопросов по их использованию, однако это простые примеры, давайте перейдём к чему-нибудь посложнее.</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Members</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #FF7B72">|</span><span style="color: #A5D6FF">"Valentin Bird"</span><span style="color: #FF7B72">|</span><span style="color: #A5D6FF">"Adelya"</span><span style="color: #FF7B72">|</span><span style="color: #A5D6FF">"beyz1k"</span><span style="color: #FF7B72">|</span><span style="color: #A5D6FF">"Omonillo"</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Foo</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">T</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">extends</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">K</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Map</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">K</span><span style="color: #C9D1D9">&gt;;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">foo</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Foo</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Members</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">new</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">Map</span><span style="color: #C9D1D9">([</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"ceo"</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #A5D6FF">"Valentin Bird"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"team leader"</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #A5D6FF">"Adelya"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"manager"</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #A5D6FF">"beyz1k"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"promoter"</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #A5D6FF">"Omonillo"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"promoter"</span><span style="color: #C9D1D9">]</span></span>
+<span class="line"><span style="color: #C9D1D9">]);</span></span>
+<span class="line"></span></code></pre></pre>
+<p>Итак… Думаю, что некоторым тут итак всё ясно, но давайте я лучше поясню.
+Первым делом мы создали тип <code>Members</code>, который содержит всех (год 2025) участников команды <a href="https://laf-info.netlify.app">LAF</a>, — запомним и оставим на попозже.
+Далее мы создали тип <code>Foo</code>, который принимает два дженерика: <code>T</code> и <code>K</code> (стандартные названия для дженерик-типов, однако я рекомендую называть нормально, так <code>T</code> стал бы <code>Key</code>, а <code>K</code> — <code>Value</code>). Далее, мы засунули эти дженерики в дженерики <code>Map</code> соответственно по их расположению, делайте так всегда, чтобы было проще понимать, с чем работает разработчик.
+Вернёмся к первому типу. Итак, так мы говорим, что ключи Map не могут содержать другого значения, а сами значения Map могут быть (перешли к <code>Foo&lt;Members, string</code>&gt;, говорим про <code>string</code>) только строками.
+Однако, что это за <code>extends</code> такой? — Так мы говорим, что дженерик <code>T</code> может быть только строковым литералом.
+Рассмотрим ещё другие примеры из реальной разработки на примере <a href="https://github.com/Lazy-And-Focused/KakDela">KakDela</a>:</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">IResponse</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">K</span><span style="color: #FF7B72">=</span><span style="color: #79C0FF">null</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> ({</span></span>
+<span class="line"><span style="color: #FF7B72">&amp;</span><span style="color: #FFA657">nbsp</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">successed</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">true</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">&amp;</span><span style="color: #FFA657">nbsp</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">data</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span></span>
+<span class="line"><span style="color: #FF7B72">&amp;</span><span style="color: #FFA657">nbsp</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">error</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">null</span></span>
+<span class="line"><span style="color: #C9D1D9">} </span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #FF7B72">&amp;</span><span style="color: #FFA657">nbsp</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">successed</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">false</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">&amp;</span><span style="color: #FFA657">nbsp</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">data</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">K</span></span>
+<span class="line"><span style="color: #FF7B72">&amp;</span><span style="color: #FFA657">nbsp</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">error</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span></span>
+<span class="line"><span style="color: #C9D1D9">});</span></span>
+<span class="line"><span style="color: #FF7B72">export</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">interface</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">IUser</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #FF7B72">&amp;</span><span style="color: #FFA657">nbsp</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">id</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">&amp;</span><span style="color: #FFA657">nbsp</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">username</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">&amp;</span><span style="color: #FFA657">nbsp</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">created_at</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">&amp;</span><span style="color: #FFA657">nbsp</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">avatar_url</span><span style="color: #FF7B72">?:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">&amp;</span><span style="color: #FFA657">nbsp</span><span style="color: #C9D1D9">; </span><span style="color: #FFA657">global_name</span><span style="color: #FF7B72">?:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">response1</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">IResponse</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">IUser</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; successed: </span><span style="color: #79C0FF">true</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; data: {</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; &amp;nbsp; id: </span><span style="color: #A5D6FF">"1"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; &amp;nbsp; username: </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; &amp;nbsp; created_at: </span><span style="color: #FF7B72">new</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">Date</span><span style="color: #C9D1D9">().</span><span style="color: #D2A8FF">toISOString</span><span style="color: #C9D1D9">(),</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; },</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; error: </span><span style="color: #79C0FF">null</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">response2</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">IResponse</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">IUser</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; successed: </span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; data: </span><span style="color: #79C0FF">null</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; error: </span><span style="color: #A5D6FF">"user not found"</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E">// Свойство "response2" объявлено, но его значение не было прочитано.</span></span>
+<span class="line"><span style="color: #8B949E">// Тип "{ successed: false; data: { id: string; username: string; created_at: string; }; error: null; }" не может быть назначен для типа "IResponse&lt;IUser, null&gt;".</span></span>
+<span class="line"><span style="color: #8B949E">// Типы свойства "data" несовместимы.</span></span>
+<span class="line"><span style="color: #8B949E">// Тип "{ id: string; username: string; created_at: string; }" не может быть назначен для типа "null".</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">errorResponse</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">IResponse</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">IUser</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; successed: </span><span style="color: #79C0FF">false</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; data: {</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; &amp;nbsp; id: </span><span style="color: #A5D6FF">"1"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; &amp;nbsp; username: </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; &amp;nbsp; created_at: </span><span style="color: #FF7B72">new</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">Date</span><span style="color: #C9D1D9">().</span><span style="color: #D2A8FF">toISOString</span><span style="color: #C9D1D9">(),</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; },</span></span>
+<span class="line"><span style="color: #C9D1D9">&amp;nbsp; error: </span><span style="color: #79C0FF">null</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span></code></pre></pre>
+<p>Что ж… Начнём с самого начала.
+<code>IResponse&lt;T, K=null&gt;</code>, где <code>k=null</code> — это дефолтное значение, прям как в функциях.
+А дальше мы говорим, что когда <code>successed</code> будет равен <code>true</code>, то у нас другие значения будут принимать: <code>data: T, error: null</code>. А когда <code>successed</code> будет равен <code>false</code>, то уже <code>data: K, error: string</code>.
+На самом деле так очень удобно описывать типы, ибо может появится такая ситуация, что <code>successed</code> равен <code>true</code>, а <code>data</code> будет <code>T | K</code>. Прошлым же способ мы явно указываем при каких значения <code>successed</code> какие значения будут принимать соответствующие типы. Такое можно использовать не только при <code>boolean</code>-типах, а при любых. Например, когда мы явно указываем тип объекта. Однако это уже не про дженерики.
+Пожалуй начальная информация на этом всё.</p>
+		</div>
+
+		<script>
+			document.getElementById("show_all_files").onclick = (event) => {
+				if (
+					document.getElementById("show_all_files").innerText ===
+					"Hide navigation"
+				) {
+					document.getElementById("show_all_files").innerText =
+						"Show navigation";
+					document.getElementById("all_files").style.display = "none";
+				} else {
+					document.getElementById("show_all_files").innerText =
+						"Hide navigation";
+					document.getElementById("all_files").style.display = "block";
+				}
+			};
+		</script>
+
+		<script>
+			shiki
+				.getHighlighter({
+					theme: matchMedia("(prefers-color-scheme: light)").matches
+						? "github-light"
+						: "github-dark"
+				})
+				.then((highlighter) => {
+					document.querySelectorAll("pre").forEach((element) => {
+						const language = element.dataset.lang || "js";
+						const code = highlighter.codeToHtml(element.innerText, language);
+						element.innerHTML = code;
+					});
+				});
+		</script>
+	
+</body>

@@ -44,7 +44,7 @@
 }
 
 #show_all_files, #all_files {
-  position: absolute;
+  position: fixed;
   
   right: 0;
   top: 0;
@@ -140,7 +140,7 @@ code {
 
 pre, code {
   position: relative;
-  line-height: calc(100% + 0.25em);
+  line-height: calc(100% + 0.33em);
 }
 
 pre code {

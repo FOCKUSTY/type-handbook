@@ -1,0 +1,294 @@
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+:root {
+  --bg-modal-color: #12121263;
+  --content-modal-color: #0b0b0b;
+
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  --code-font: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  
+  --text-color: #ffffff;
+  --bg-color: #000000;
+  
+  --main-color: #161616;
+  --section-color: #272727;
+  
+  --scroll-bar-background: #353535;
+  --scroll-thumb-background: #1d1d1d;
+  --scroll-thum-border: 3px solid #121212;
+
+  --component-color: #131313;
+  --shadow-color: #1f1f1f;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-color: #000000;
+    --bg-color: #ffffff;
+
+    --main-color: #e6e6e6;
+    --section-color: #ffffff;
+
+    --scroll-bar-background: #353535;
+    --scroll-thumb-background: #adadad;
+    --scroll-thum-border: 3px solid #444444;
+
+    --component-color: #e9e9e9;
+    --shadow-color: #c4c4c4;
+  }
+}
+
+#root {
+  padding: 1em 1.5em;
+
+  height: 100%;
+  width: 100%;
+}
+
+#show_all_files, #all_files {
+  position: fixed;
+  
+  right: 0;
+  top: 0;
+}
+
+#show_all_files {
+  z-index: 1000;
+}
+
+#all_files {
+  display: none;
+
+  overflow-y: auto;
+
+  max-height: min(50%, 10em);
+
+  margin: 0.25em 0.5em;
+  padding: 0.5em 1em;
+
+  border-radius: 20px;
+  background-color: var(--section-color);
+  z-index: 999;
+}
+
+html,
+body {
+  margin: 0;
+
+  height: 100%;
+
+  color: var(--text-color);
+  background-color: var(--bg-color);
+
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--scroll-bar-background);
+    border-radius: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb-background);
+    border-radius: 10px;
+    border: var(--scroll-thum-border);
+  }
+}
+
+* {
+  font-family: var(--font);
+  box-sizing: border-box;
+
+  color: var(--text-color);
+  transition: 0.75s;
+}
+
+button {
+  border: 0;
+
+  padding: 5px 15px;
+  border-radius: 10px;
+
+  background-color: var(--bg-color);
+  cursor: pointer;
+}
+
+p {
+  padding: 0.25em 0.5em;
+}
+
+pre {
+  display: block;
+  border-radius: 20px;
+  padding: 0.5em 1em;
+
+  width: calc(100% - 1em);
+  overflow-x: auto;
+}
+
+code {
+  overflow-x: auto;
+  border-radius: 10px;
+  padding: 0 0.4em;
+  
+  background-color: var(--section-color);
+  font-family: var(--code-font);
+}
+
+pre, code {
+  position: relative;
+  line-height: calc(100% + 0.33em);
+}
+
+pre code {
+  background-color: inherit;
+  font-family: inherit;
+  padding: 0;
+}
+
+.page {
+  height: 100%;
+}
+
+@media screen and (width < 600px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  * {
+    font-size: 16px;
+  }
+}
+</style>
+		<title>Ежедневные типы</title>
+	</head>
+	<body>
+		<script src="https://unpkg.com/shiki@0.9.10/dist/index.unpkg.iife.js"></script>
+
+		<button id="show_all_files">Show navigation</button>
+		<nav id="all_files"><ul>
+      <li><a href="/D:/projects/me/type-handbook/Вступление.html">Вступление</a><a></a></li><a>
+</a><li><a></a><a href="/D:/projects/me/type-handbook/Начало%20типизации/Дженерики%20(Generics).html">Начало типизации/Дженерики (Generics)</a><a></a></li><a>
+</a><li><a></a><a href="/D:/projects/me/type-handbook/Начало%20типизации/Ежедневные%20типы.html">Начало типизации/Ежедневные типы</a><a></a></li><a>
+</a><li><a></a><a href="/D:/projects/me/type-handbook/Начало%20типизации/Начало%20-%20вступление.html">Начало типизации/Начало - вступление</a><a></a></li><a>
+</a><li><a></a><a href="/D:/projects/me/type-handbook/Начало%20типизации/Создание%20своих%20типов.html">Начало типизации/Создание своих типов</a><a></a></li><a>
+</a><li><a></a><a href="/D:/projects/me/type-handbook/Начало%20типизации/Типы%20в%20функциях.html">Начало типизации/Типы в функциях</a><a></a></li><a>
+    </a></ul></nav><a>
+		
+		</a><div id="root"><a>
+			<h1 id="">Особое внимание</h1>
+<h3 id="anyunknown"><code>any/unknown</code></h3>
+<p>Данные тип используется для неопределенного типа (Когда тип может быть любой). Обычно использование типа <code>any</code> не приветствуется в данной языке и на него жалуются некоторые форматировщики по типу <code>eslint</code>. Однако данные тип (типы: <code>any/unknown</code>) можно использовать, когда тип и правда может быть любым, или когда излишняя типизация не к месту.
+Желательно не использовать данный тип, переменную с данным типом можно переопределить на любое значение, что может привести к непредвиденным ошибкам. Используйте тип <code>any/unknown</code> по назначению или тогда, когда знаете, что делаете.</p>
+<h1 id="-1">Обычные типы</h1>
+<ul>
+<li><code>string</code> - тип строки (<code>"Привет"</code>, <code>'Привет'</code> и другие).</li>
+<li><code>number</code> - числовой тип (<code>1</code>, <code>2</code>, <code>3.52</code>, <code>-23</code> и другие).</li>
+<li><code>bigint</code> - числовой тип (позволяет работать с более большими числами) (<code>1n</code>, <code>23n</code>, <code>12385735291999239576719235079235n</code>, <code>1n &lt;&lt; 2n</code>, <code>1n &lt;&lt;&lt; 2n</code> и другие).</li>
+<li><code>boolean</code> - тип булевого значения (<code>false</code> или  <code>true</code>)</li>
+<li>…возможно тут ещё что-то появится… автору в голову ничего не лезет…</li>
+</ul>
+<h1 id="-2">"Усиленная" типизация</h1>
+</a><p><a>Желательно просмотреть узнать </a><a href="./Дженерики%20(Generics).html">дженерики</a>
+Прочитайте также <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html">информацию то TypeScript</a>
+Рассмотрим типы, которые встроены в TypeScript по умолчанию:</p>
+<h3 id="awaitedtype"><code>Awaited&lt;Type&gt;</code></h3>
+<p>Тип, который может использоваться совместно с <code>Promise</code>. Думаю, что все понимают, как он работает</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">A</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Awaited</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Promise</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">&gt;&gt;;</span></span>
+<span class="line"><span style="color: #8B949E">// type A - string</span></span>
+<span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">B</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Awaited</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Promise</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Promise</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">number</span><span style="color: #C9D1D9">&gt;&gt;&gt;;</span></span>
+<span class="line"><span style="color: #8B949E">// type B - number</span></span>
+<span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">C</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Awaited</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">boolean</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Promise</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">number</span><span style="color: #C9D1D9">&gt;&gt;;</span></span>
+<span class="line"><span style="color: #8B949E">// type C - boolean | number</span></span>
+<span class="line"></span></code></pre></pre>
+<h3 id="partialtype"><code>Partial&lt;Type&gt;</code></h3>
+<p>Тип для создания необязательных объектов. Он делаем все ключи в объекте необязательными. Обычно он используется для обновления какой-то информации:</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #8B949E">// Сам тип выглядит так</span></span>
+<span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Partial</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  [</span><span style="color: #FFA657">P</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">keyof</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">]</span><span style="color: #FF7B72">?:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">[</span><span style="color: #FFA657">P</span><span style="color: #C9D1D9">] </span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">undefined</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span></code></pre></pre>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">interface</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">User</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">username</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">description</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">updateUser</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">user</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">User</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">update</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Partial</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">User</span><span style="color: #C9D1D9">&gt;)</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">User</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> { </span><span style="color: #FF7B72">...</span><span style="color: #C9D1D9">user, </span><span style="color: #FF7B72">...</span><span style="color: #C9D1D9">update };</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">user</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">User</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  username: </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  description: </span><span style="color: #A5D6FF">""</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">updatedUser</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">updateUser</span><span style="color: #C9D1D9">(user, { description: </span><span style="color: #A5D6FF">"CEO, Backend-developer"</span><span style="color: #C9D1D9"> });</span></span>
+<span class="line"><span style="color: #8B949E">// updatedUser = { username: "FOCKUSTY", description: "CEO, Backend-developer" }</span></span>
+<span class="line"></span></code></pre></pre>
+<h3 id="requiredtype"><code>Required&lt;Type&gt;</code></h3>
+<p>Противоположный тип к <code>Partial</code>.</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Required</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  [</span><span style="color: #FFA657">P</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">keyof</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">]</span><span style="color: #FF7B72">-?:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">[</span><span style="color: #FFA657">P</span><span style="color: #C9D1D9">];</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span></code></pre></pre>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">interface</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">ICreateUser</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">username</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">description</span><span style="color: #FF7B72">?:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">createUser</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">user</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">ICreateUser</span><span style="color: #C9D1D9">)</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Required</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">ICreateUser</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> { </span><span style="color: #FF7B72">...</span><span style="color: #C9D1D9"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">user</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">createUser</span><span style="color: #C9D1D9">({ username: </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9"> });</span></span>
+<span class="line"><span style="color: #8B949E">// type user - { username: string, description: string }</span></span>
+<span class="line"></span></code></pre></pre>
+		</div>
+
+		<script>
+			document.getElementById("show_all_files").onclick = (event) => {
+				if (
+					document.getElementById("show_all_files").innerText ===
+					"Hide navigation"
+				) {
+					document.getElementById("show_all_files").innerText =
+						"Show navigation";
+					document.getElementById("all_files").style.display = "none";
+				} else {
+					document.getElementById("show_all_files").innerText =
+						"Hide navigation";
+					document.getElementById("all_files").style.display = "block";
+				}
+			};
+		</script>
+
+		<script>
+			shiki
+				.getHighlighter({
+					theme: matchMedia("(prefers-color-scheme: light)").matches
+						? "github-light"
+						: "github-dark"
+				})
+				.then((highlighter) => {
+					document.querySelectorAll("pre").forEach((element) => {
+						const language = element.dataset.lang || "js";
+						const code = highlighter.codeToHtml(element.innerText, language);
+						element.innerHTML = code;
+					});
+				});
+		</script>
+	
+</body>

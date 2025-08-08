@@ -149,6 +149,8 @@ pre {
 }
 
 code {
+  cursor: pointer;
+
   overflow-x: auto;
   border-radius: 10px;
   padding: 0 0.4em;
@@ -163,6 +165,8 @@ pre, code {
 }
 
 pre code {
+  cursor: auto;
+
   background-color: inherit;
   font-family: inherit;
   padding: 0;
@@ -184,6 +188,10 @@ pre code {
 }
 
 @media screen and (width < 600px) {
+  .copy {
+    margin: 0 0.5em;
+  }
+
   h1 {
     font-size: 24px;
   }

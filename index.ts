@@ -5,7 +5,17 @@ config();
 import { HtmlManager } from "./html.manager.js";
 import { FileManager } from "./file.manager.js";
 
+import path, { dirname } from "path";
+import fs from "fs";
+
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 import { getHighlighter } from "shiki";
+
+const css = fs.readFileSync("./style.css", "utf8");
 
 (async () => {
 	const highlighter = await getHighlighter({ themes: ["github-dark", "github-light"] });
@@ -31,7 +41,21 @@ import { getHighlighter } from "shiki";
 			),
 		destroy: ({ paths }: { paths: string[] }) =>
 			FileManager.deleteFiles(paths.map((p) => p.replace(".md", ".html"))),
-		development: () => FileManager.deleteFiles(new FileManager("./", ".js").paths)
+		development: ({
+			paths,
+			convertedFiles
+		}: {
+			paths: string[];
+			convertedFiles: string[];
+		}) => {
+			return convertedFiles.map((file, index) =>
+				new HtmlManager(file, paths[index], highlighter).generateHtml((html) => {
+					return html
+						.replaceAll(new RegExp('(?:\\<link rel\\=\\"stylesheet\\" href\\=\\".*\\"\\>)', "g"), `<style>\n${css}\n</style>`)
+						.replaceAll("<a href=\"/", "<a href=\"/" + __dirname.replaceAll("\\", "/") + "/")
+				})
+			)
+		}
 	};
 
 	const errorFunction = () => {

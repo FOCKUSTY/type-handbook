@@ -9,7 +9,6 @@ import {
 } from "./constants.js";
 
 import showdown from "showdown";
-import e from "express";
 const converter = new showdown.Converter();
 
 type Dirs = {

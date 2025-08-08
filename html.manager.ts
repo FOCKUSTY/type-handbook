@@ -27,9 +27,9 @@ export class HtmlManager {
 		this.html = this.stylizeHtmlCodeBlocks();
 	}
 
-	public generateHtml() {
+	public generateHtml(parseFunc: (html: string) => string = (html) => html) {
 		const resolvedPath = resolve(this.mdPath.replace(".md", ".html"));
-		writeFileSync(resolvedPath, this.html, "utf-8");
+		writeFileSync(resolvedPath, parseFunc(this.html), "utf-8");
 	}
 
 	private stylizeHtmlCodeBlocks() {

@@ -132,7 +132,6 @@ pre {
 code {
   overflow-x: auto;
   border-radius: 10px;
-  padding: 0 0.4em;
   
   background-color: var(--section-color);
   font-family: var(--code-font);

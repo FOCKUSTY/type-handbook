@@ -75,7 +75,7 @@ export const ulMapObject = <T, K extends { [key: string]: unknown }>(
 		if (typeof object[key] === "string") {
 			output += `
 			<span>
-				<a style="padding: 0 0.5em" href="/${func({ value: key, index, array: <T[]>array, object, prefix })}">\>${key}</a>
+				<a style="padding: 0 0.5em" href="${parseUrl("/" + func({ value: key, index, array: <T[]>array, object, prefix }))}">\>${key}</a>
 			</span>\n
 			`;
 		} else {

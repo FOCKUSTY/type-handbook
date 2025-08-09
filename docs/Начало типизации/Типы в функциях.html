@@ -1,0 +1,234 @@
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://fockusty.github.io/type-handbook/utils/style.css">
+		<title>Типы в функциях</title>
+	</head>
+	<body>
+		<script src="https://unpkg.com/shiki@0.9.10/dist/index.unpkg.iife.js"></script>
+
+		<button id="show_all_files">Show navigation</button>
+		<nav id="all_files">
+			<div>
+		
+			<span>
+				<a style="padding: 0 0.5em" href="https://fockusty.github.io/type-handbook/docs/Вступление.html">&gt;Вступление.html</a>
+			</span>
+
+			
+				<div class="dropdown">
+					<span class="dropdown_summary" onclick="dropdownOnClick('docs/Начало типизации')">Начало типизации
+					</span>
+					
+					<div class="dropdown_content" style="display: none; margin: 0 0 0 0.5em;" id="docs/Начало типизации">
+						
+			<span>
+				<a style="padding: 0 0.5em" href="https://fockusty.github.io/type-handbook/docs/Начало%20типизации/Дженерики%20(Generics).html">&gt;Дженерики (Generics).html</a>
+			</span>
+
+			
+			<span>
+				<a style="padding: 0 0.5em" href="https://fockusty.github.io/type-handbook/docs/Начало%20типизации/Ежедневные%20типы.html">&gt;Ежедневные типы.html</a>
+			</span>
+
+			
+			<span>
+				<a style="padding: 0 0.5em" href="https://fockusty.github.io/type-handbook/docs/Начало%20типизации/Начало%20-%20вступление.html">&gt;Начало - вступление.html</a>
+			</span>
+
+			
+			<span>
+				<a style="padding: 0 0.5em" href="https://fockusty.github.io/type-handbook/docs/Начало%20типизации/Создание%20своих%20типов.html">&gt;Создание своих типов.html</a>
+			</span>
+
+			
+			<span>
+				<a style="padding: 0 0.5em" href="https://fockusty.github.io/type-handbook/docs/Начало%20типизации/Типы%20в%20функциях.html">&gt;Типы в функциях.html</a>
+			</span>
+
+			
+
+					</div>
+				</div>
+			
+    </div>
+		</nav>
+		
+		<div id="root">
+			<p>Я решил вынести это в отдельный блок, чтобы было удобнее.</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #8B949E">// Стандартная функция на js</span></span>
+<span class="line"><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">printHello</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">name</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"Hello, "</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> name);</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E">// Рассмотрим функции на ts</span></span>
+<span class="line"><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">printHello2</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">name</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">)</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">void</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"Hello, "</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> name);</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E">// Указание типов для аргументов в функции идёт после двоеточия, как в переменных.</span></span>
+<span class="line"><span style="color: #8B949E">// Чтобы указать тип, который возвращает функция, то ставим двоеточие после круглых скобок.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E">// Рассмотрим другую функцию</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">otherFunc</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">num</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">number</span><span style="color: #C9D1D9">)</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">void</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(num);</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<p>Рассмотри подробно:</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #8B949E">// Асинхронные функции</span></span>
+<span class="line"><span style="color: #FF7B72">async</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">getNumber</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">num</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">number</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> num;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">getNumber2</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">async</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">num</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">number</span><span style="color: #C9D1D9">) </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> num;</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">data</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">getNumber</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">); </span><span style="color: #8B949E">// Promise&lt;number&gt;</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">data2</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">getNumer2</span><span style="color: #C9D1D9">(</span><span style="color: #79C0FF">0</span><span style="color: #C9D1D9">); </span><span style="color: #8B949E">// Promise&lt;number&gt;</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<p>Примечание: Асинхронные функции всегда возвращают <code>Promise</code>.</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">languages</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> [</span><span style="color: #A5D6FF">"JavaScript"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"TypeScript"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"GoLang"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"Rust"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"C++"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"C#"</span><span style="color: #C9D1D9">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">languages.</span><span style="color: #D2A8FF">map</span><span style="color: #C9D1D9">(</span><span style="color: #FF7B72">function</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">language</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">)</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> language </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">" Language"</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">languages.</span><span style="color: #D2A8FF">map</span><span style="color: #C9D1D9">((</span><span style="color: #FFA657">language</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">)</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> language </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">" is the best"</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">});</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<h1 id="">Объекты в функциях</h1>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Props</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">name</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FFA657">age</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">number</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">SomeFunction</span><span style="color: #C9D1D9">({ </span><span style="color: #FFA657">name</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">age</span><span style="color: #C9D1D9"> }</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Props</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">`Your are ${</span><span style="color: #C9D1D9">age</span><span style="color: #A5D6FF">} age, wow! Congratulations, ${</span><span style="color: #C9D1D9">name</span><span style="color: #A5D6FF">}`</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">data</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Props</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    name: </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    age: </span><span style="color: #79C0FF">15</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #D2A8FF">SomeFunction</span><span style="color: #C9D1D9">({ name: </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">, age: </span><span style="color: #79C0FF">15</span><span style="color: #C9D1D9"> }));</span></span>
+<span class="line"><span style="color: #C9D1D9">console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #D2A8FF">SomeFunction</span><span style="color: #C9D1D9">(data));</span></span>
+<span class="line"><span style="color: #8B949E">// Итак, я точно не знаю, как это называется, но я называю это разворачиванием объекта в аргументы функции. Фактически мы принимаем объект и сразу его разбиваем на аргументы.</span></span>
+<span class="line"><span style="color: #8B949E">// Такое точно используется в фреймворке React и других, также это является полезным, когда аргументы функции превышают двух.</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+		</div>
+
+		<div id="copy-element" style="display: none;">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div>
+
+		<div id="copy-div" style="position: fixed; display: none; transition: 0.3s; width: 100%; text-align: center;">copiend!</div>
+
+		<script>
+			const copyDiv = document.getElementById("copy-div");
+			
+			document.querySelectorAll("code").forEach(element => {
+				copyDiv.style.bottom = "0";
+			  
+				const parent = element.getBoundingClientRect();
+				
+				element.onclick = () => {
+					if (element.parentElement.className === "shiki") return;
+
+					copyDiv.style.display = "block";
+					copyDiv.style.transition = "0.5s";
+
+					copyDiv.style.opacity = "1";
+
+					setTimeout(() => {
+						copyDiv.style.opacity = "0";
+
+						setTimeout(() => {
+							copyDiv.style.display = "none";
+							copyDiv.style.transition = "0s";
+						}, 300);
+					}, 300);
+
+					navigator.clipboard.writeText(element.innerText);
+				}
+			})
+		</script>
+
+		<script>
+			const dropdownOnClick = (id) => {
+				const element = document.getElementById(`${id}`);
+				element.style.display = element.style.display === "none"
+					? "flex" : "none";
+			}
+		</script>
+
+		<script>
+			document.getElementById("show_all_files").onclick = (event) => {
+				if (
+					document.getElementById("show_all_files").innerText ===
+					"Hide navigation"
+				) {
+					document.getElementById("show_all_files").innerText =
+						"Show navigation";
+					document.getElementById("all_files").style.display = "none";
+				} else {
+					document.getElementById("show_all_files").innerText =
+						"Hide navigation";
+					document.getElementById("all_files").style.display = "block";
+				}
+			};
+		</script>
+
+		<script>
+			const copy = document.getElementById("copy-element");
+
+			shiki
+				.getHighlighter({
+					theme: matchMedia("(prefers-color-scheme: light)").matches
+						? "github-light"
+						: "github-dark"
+				})
+				.then((highlighter) => {
+					document.querySelectorAll("pre").forEach((element) => {
+						const div = document.createElement("div")
+						
+						div.className = "copy";
+						div.innerHTML = copy.innerHTML;
+
+						const language = element.dataset.lang || "js";
+						const code = highlighter.codeToHtml(element.innerText, language);
+
+						div.onclick = () => {
+							copyDiv.style.display = "block";
+							copyDiv.style.transition = "0.5s";
+
+							copyDiv.style.opacity = "1";
+
+							setTimeout(() => {
+								copyDiv.style.opacity = "0";
+
+								setTimeout(() => {
+									copyDiv.style.display = "none";
+									copyDiv.style.transition = "0s";
+								}, 300);
+							}, 300);
+
+							navigator.clipboard.writeText(element.innerText);
+						}
+
+						element.innerHTML = code;
+						element.appendChild(div);
+					});
+				});
+		</script>
+	
+</body>

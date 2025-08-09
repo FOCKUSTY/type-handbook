@@ -10,28 +10,53 @@
 		<script src="https://unpkg.com/shiki@0.9.10/dist/index.unpkg.iife.js"></script>
 
 		<button id="show_all_files">Show navigation</button>
-		<nav id="all_files">
-			{{ HTML ALL FILES }}
-		</nav>
-		
-		<div id="root">
-			{{ HTML BODY }}
+		<nav id="all_files">{{ HTML ALL FILES }}</nav>
+
+		<div id="root">{{ HTML BODY }}</div>
+
+		<div id="copy-element" style="display: none">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="50"
+				height="50"
+				viewBox="0 0 50 50"
+			>
+				<g
+					fill="none"
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+				>
+					<path
+						d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"
+					/>
+					<path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2" />
+				</g>
+			</svg>
 		</div>
 
-		<div id="copy-element" style="display: none;">
-			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"/><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"/></g></svg>
+		<div
+			id="copy-div"
+			style="
+				position: fixed;
+				display: none;
+				transition: 0.3s;
+				width: 100%;
+				text-align: center;
+			"
+		>
+			copiend!
 		</div>
-
-		<div id="copy-div" style="position: fixed; display: none; transition: 0.3s; width: 100%; text-align: center;">copiend!</div>
 
 		<script>
 			const copyDiv = document.getElementById("copy-div");
-			
-			document.querySelectorAll("code").forEach(element => {
+
+			document.querySelectorAll("code").forEach((element) => {
 				copyDiv.style.bottom = "0";
-			  
+
 				const parent = element.getBoundingClientRect();
-				
+
 				element.onclick = () => {
 					if (element.parentElement.className === "shiki") return;
 
@@ -50,16 +75,16 @@
 					}, 300);
 
 					navigator.clipboard.writeText(element.innerText);
-				}
-			})
+				};
+			});
 		</script>
 
 		<script>
 			const dropdownOnClick = (id) => {
 				const element = document.getElementById(`${id}`);
-				element.style.display = element.style.display === "none"
-					? "flex" : "none";
-			}
+				element.style.display =
+					element.style.display === "none" ? "flex" : "none";
+			};
 		</script>
 
 		<script>
@@ -90,8 +115,8 @@
 				})
 				.then((highlighter) => {
 					document.querySelectorAll("pre").forEach((element) => {
-						const div = document.createElement("div")
-						
+						const div = document.createElement("div");
+
 						div.className = "copy";
 						div.innerHTML = copy.innerHTML;
 
@@ -114,7 +139,7 @@
 							}, 300);
 
 							navigator.clipboard.writeText(element.innerText);
-						}
+						};
 
 						element.innerHTML = code;
 						element.appendChild(div);

@@ -1,0 +1,239 @@
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/style.css">
+		<title>Ежедневные типы</title>
+	</head>
+	<body>
+		<script src="https://unpkg.com/shiki@0.9.10/dist/index.unpkg.iife.js"></script>
+
+		<button id="show_all_files">Show navigation</button>
+		<nav id="all_files">
+			<div>
+		
+			<span>
+				<a style="padding: 0 0.5em" href="D:/projects/me/type-handbook//Вступление.html">&gt;Вступление.html</a>
+			</span>
+
+			
+				<div class="dropdown">
+					<span class="dropdown_summary" onclick="dropdownOnClick('docs/Начало типизации')">Начало типизации
+					</span>
+					
+					<div class="dropdown_content" style="display: none; margin: 0 0 0 0.5em;" id="docs/Начало типизации">
+						
+			<span>
+				<a style="padding: 0 0.5em" href="D:/projects/me/type-handbook/docs/Начало%20типизации/Дженерики%20(Generics).html">&gt;Дженерики (Generics).html</a>
+			</span>
+
+			
+			<span>
+				<a style="padding: 0 0.5em" href="D:/projects/me/type-handbook/docs/Начало%20типизации/Ежедневные%20типы.html">&gt;Ежедневные типы.html</a>
+			</span>
+
+			
+			<span>
+				<a style="padding: 0 0.5em" href="D:/projects/me/type-handbook/docs/Начало%20типизации/Начало%20-%20вступление.html">&gt;Начало - вступление.html</a>
+			</span>
+
+			
+			<span>
+				<a style="padding: 0 0.5em" href="D:/projects/me/type-handbook/docs/Начало%20типизации/Создание%20своих%20типов.html">&gt;Создание своих типов.html</a>
+			</span>
+
+			
+			<span>
+				<a style="padding: 0 0.5em" href="D:/projects/me/type-handbook/docs/Начало%20типизации/Типы%20в%20функциях.html">&gt;Типы в функциях.html</a>
+			</span>
+
+			
+
+					</div>
+				</div>
+			
+    </div>
+		</nav>
+		
+		<div id="root">
+			<h1 id="">Особое внимание</h1>
+<h3 id="anyunknown"><code>any/unknown</code></h3>
+<p>Данные тип используется для неопределенного типа (Когда тип может быть любой). Обычно использование типа <code>any</code> не приветствуется в данной языке и на него жалуются некоторые форматировщики по типу <code>eslint</code>. Однако данные тип (типы: <code>any/unknown</code>) можно использовать, когда тип и правда может быть любым, или когда излишняя типизация не к месту.
+Желательно не использовать данный тип, переменную с данным типом можно переопределить на любое значение, что может привести к непредвиденным ошибкам. Используйте тип <code>any/unknown</code> по назначению или тогда, когда знаете, что делаете.</p>
+<h1 id="-1">Обычные типы</h1>
+<ul>
+<li><code>string</code> - тип строки (<code>"Привет"</code>, <code>'Привет'</code> и другие).</li>
+<li><code>number</code> - числовой тип (<code>1</code>, <code>2</code>, <code>3.52</code>, <code>-23</code> и другие).</li>
+<li><code>bigint</code> - числовой тип (позволяет работать с более большими числами) (<code>1n</code>, <code>23n</code>, <code>12385735291999239576719235079235n</code>, <code>1n &lt;&lt; 2n</code>, <code>1n &lt;&lt;&lt; 2n</code> и другие).</li>
+<li><code>boolean</code> - тип булевого значения (<code>false</code> или  <code>true</code>)</li>
+<li>…возможно тут ещё что-то появится… автору в голову ничего не лезет…</li>
+</ul>
+<h1 id="-2">"Усиленная" типизация</h1>
+<p>Желательно просмотреть узнать <a href="./Дженерики%20(Generics).html">дженерики</a>
+Прочитайте также <a href="https://www.typescriptlang.org/docs/handbook/utility-types.html">информацию то TypeScript</a>
+Рассмотрим типы, которые встроены в TypeScript по умолчанию:</p>
+<h3 id="awaitedtype"><code>Awaited&lt;Type&gt;</code></h3>
+<p>Тип, который может использоваться совместно с <code>Promise</code>. Думаю, что все понимают, как он работает</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">A</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Awaited</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Promise</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">&gt;&gt;;</span></span>
+<span class="line"><span style="color: #8B949E">// type A - string</span></span>
+<span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">B</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Awaited</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Promise</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">Promise</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">number</span><span style="color: #C9D1D9">&gt;&gt;&gt;;</span></span>
+<span class="line"><span style="color: #8B949E">// type B - number</span></span>
+<span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">C</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Awaited</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">boolean</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Promise</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">number</span><span style="color: #C9D1D9">&gt;&gt;;</span></span>
+<span class="line"><span style="color: #8B949E">// type C - boolean | number</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<h3 id="partialtype"><code>Partial&lt;Type&gt;</code></h3>
+<p>Тип для создания необязательных объектов. Он делаем все ключи в объекте необязательными. Обычно он используется для обновления какой-то информации:</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #8B949E">// Сам тип выглядит так</span></span>
+<span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Partial</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  [</span><span style="color: #FFA657">P</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">keyof</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">]</span><span style="color: #FF7B72">?:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">[</span><span style="color: #FFA657">P</span><span style="color: #C9D1D9">] </span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">undefined</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">interface</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">User</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">username</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">description</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">updateUser</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">user</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">User</span><span style="color: #C9D1D9">, </span><span style="color: #FFA657">update</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Partial</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">User</span><span style="color: #C9D1D9">&gt;)</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">User</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> { </span><span style="color: #FF7B72">...</span><span style="color: #C9D1D9">user, </span><span style="color: #FF7B72">...</span><span style="color: #C9D1D9">update };</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">user</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">User</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  username: </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">  description: </span><span style="color: #A5D6FF">""</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">updatedUser</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">updateUser</span><span style="color: #C9D1D9">(user, { description: </span><span style="color: #A5D6FF">"CEO, Backend-developer"</span><span style="color: #C9D1D9"> });</span></span>
+<span class="line"><span style="color: #8B949E">// updatedUser = { username: "FOCKUSTY", description: "CEO, Backend-developer" }</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<h3 id="requiredtype"><code>Required&lt;Type&gt;</code></h3>
+<p>Противоположный тип к <code>Partial</code>.</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Required</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  [</span><span style="color: #FFA657">P</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">in</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">keyof</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">]</span><span style="color: #FF7B72">-?:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">T</span><span style="color: #C9D1D9">[</span><span style="color: #FFA657">P</span><span style="color: #C9D1D9">];</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">interface</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">ICreateUser</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">username</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #C9D1D9">  </span><span style="color: #FFA657">description</span><span style="color: #FF7B72">?:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">createUser</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">user</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">ICreateUser</span><span style="color: #C9D1D9">)</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Required</span><span style="color: #C9D1D9">&lt;</span><span style="color: #FFA657">ICreateUser</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> { </span><span style="color: #FF7B72">...</span><span style="color: #C9D1D9"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">user</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">createUser</span><span style="color: #C9D1D9">({ username: </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9"> });</span></span>
+<span class="line"><span style="color: #8B949E">// type user - { username: string, description: string }</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+		</div>
+
+		<div id="copy-element" style="display: none;">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div>
+
+		<div id="copy-div" style="position: fixed; display: none; transition: 0.3s; width: 100%; text-align: center;">copiend!</div>
+
+		<script>
+			const copyDiv = document.getElementById("copy-div");
+			
+			document.querySelectorAll("code").forEach(element => {
+				copyDiv.style.bottom = "0";
+			  
+				const parent = element.getBoundingClientRect();
+				
+				element.onclick = () => {
+					if (element.parentElement.className === "shiki") return;
+
+					copyDiv.style.display = "block";
+					copyDiv.style.transition = "0.5s";
+
+					copyDiv.style.opacity = "1";
+
+					setTimeout(() => {
+						copyDiv.style.opacity = "0";
+
+						setTimeout(() => {
+							copyDiv.style.display = "none";
+							copyDiv.style.transition = "0s";
+						}, 300);
+					}, 300);
+
+					navigator.clipboard.writeText(element.innerText);
+				}
+			})
+		</script>
+
+		<script>
+			const dropdownOnClick = (id) => {
+				const element = document.getElementById(`${id}`);
+				element.style.display = element.style.display === "none"
+					? "flex" : "none";
+			}
+		</script>
+
+		<script>
+			document.getElementById("show_all_files").onclick = (event) => {
+				if (
+					document.getElementById("show_all_files").innerText ===
+					"Hide navigation"
+				) {
+					document.getElementById("show_all_files").innerText =
+						"Show navigation";
+					document.getElementById("all_files").style.display = "none";
+				} else {
+					document.getElementById("show_all_files").innerText =
+						"Hide navigation";
+					document.getElementById("all_files").style.display = "block";
+				}
+			};
+		</script>
+
+		<script>
+			const copy = document.getElementById("copy-element");
+
+			shiki
+				.getHighlighter({
+					theme: matchMedia("(prefers-color-scheme: light)").matches
+						? "github-light"
+						: "github-dark"
+				})
+				.then((highlighter) => {
+					document.querySelectorAll("pre").forEach((element) => {
+						const div = document.createElement("div")
+						
+						div.className = "copy";
+						div.innerHTML = copy.innerHTML;
+
+						const language = element.dataset.lang || "js";
+						const code = highlighter.codeToHtml(element.innerText, language);
+
+						div.onclick = () => {
+							copyDiv.style.display = "block";
+							copyDiv.style.transition = "0.5s";
+
+							copyDiv.style.opacity = "1";
+
+							setTimeout(() => {
+								copyDiv.style.opacity = "0";
+
+								setTimeout(() => {
+									copyDiv.style.display = "none";
+									copyDiv.style.transition = "0s";
+								}, 300);
+							}, 300);
+
+							navigator.clipboard.writeText(element.innerText);
+						}
+
+						element.innerHTML = code;
+						element.appendChild(div);
+					});
+				});
+		</script>
+	
+</body>

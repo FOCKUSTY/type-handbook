@@ -5,7 +5,7 @@ config();
 import { HtmlManager } from "./html.manager.js";
 import { FileManager } from "./file.manager.js";
 
-import path, { dirname } from "path";
+import path from "path";
 import fs from "fs";
 
 import { fileURLToPath } from 'url';
@@ -14,8 +14,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 import { getHighlighter } from "shiki";
+import { INPUT_DIR } from "./constants.js";
 
-const css = fs.readFileSync("./style.css", "utf8");
+const css = fs.readFileSync(path.join(__dirname, "../", "utils", "style.css"), "utf8");
 
 (async () => {
 	const highlighter = await getHighlighter({ themes: ["github-dark", "github-light"] });
@@ -52,7 +53,7 @@ const css = fs.readFileSync("./style.css", "utf8");
 				new HtmlManager(file, paths[index], highlighter).generateHtml((html) => {
 					return html
 						.replaceAll(new RegExp('(?:\\<link rel\\=\\"stylesheet\\" href\\=\\".*\\"\\>)', "g"), `<style>\n${css}\n</style>`)
-						.replaceAll("<a href=\"/", "<a href=\"/" + __dirname.replaceAll("\\", "/") + "/")
+						// .replaceAll("<a href=\"/", "<a href=\"/" + __dirname.replaceAll("\\", "/") + "/")
 				})
 			)
 		}
@@ -63,7 +64,7 @@ const css = fs.readFileSync("./style.css", "utf8");
 	};
 
 	(() => {
-		const fileManager = new FileManager("./").readDir();
+		const fileManager = new FileManager(INPUT_DIR).readDir();
 		const { paths } = fileManager;
 
 		const mdFiles = fileManager.readFiles();

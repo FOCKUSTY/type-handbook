@@ -1,5 +1,5 @@
 import { writeFileSync } from "node:fs";
-import { parse } from "node:path";
+import { join, parse } from "node:path";
 import { Highlighter } from "shiki";
 import { JSDOM } from "jsdom";
 
@@ -7,7 +7,7 @@ import {
 	resolvePath as resolve,
 	EXAMPLE_HTML_FILE,
 	HTML_CONSTANTS,
-	URL_PREFIX
+	URL_PREFIX,
 } from "./constants.js";
 
 import { FileManager } from "./file.manager.js";
@@ -73,11 +73,10 @@ export class HtmlManager {
 
 	private ParseHtml() {
 		return `${EXAMPLE_HTML_FILE}`
-      .replaceAll('href="/', `href="${URL_PREFIX}/`)
 			.replace(HTML_CONSTANTS.title, parse(this.mdPath).name)
 			.replace(
 				HTML_CONSTANTS.body,
-				`${this.rawHtml}`.replaceAll('href="/', `href="${URL_PREFIX}/`)
+				`${this.rawHtml}`
 			)
 			.replace(HTML_CONSTANTS.allFiles, this.fileManager.getAllHtmlFilesInLinks())
 			.replaceAll(".md", ".html")

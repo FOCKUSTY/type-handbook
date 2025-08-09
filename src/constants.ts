@@ -1,17 +1,23 @@
 import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from 'url';
 
-export const URL_PREFIX = process.env.URL_PREFIX || "";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export const INPUT_DIR = join(__dirname, "../");
+export const URL_PREFIX = process.env.URL_PREFIX || INPUT_DIR;
 
 export const resolvePath = (path: string, ...paths: string[]) => join(path, ...paths);
-export const parseUrl = (url: string) =>
+export const parseUrl = (url: string) => (
 	url.startsWith("./")
-		? url.replace("./", URL_PREFIX + "/")
+		? url.replace("./", URL_PREFIX)
 		: url.startsWith("\\")
-			? url.replace("\\", URL_PREFIX + "\\")
-			: URL_PREFIX + "\\" + url;
+			? url.replace("\\", URL_PREFIX)
+			: URL_PREFIX + url
+).replaceAll(" ", "%20").replaceAll("\\", "/");
 
-export const EXAMPLE_HTML_FILE = readFileSync(resolvePath("./example.html"), "utf-8");
+export const EXAMPLE_HTML_FILE = readFileSync(resolvePath(__dirname, "../", "utils", "example.html"), "utf-8");
 export const HTML_CONSTANTS = {
 	title: "{{ HTML TITLE }}",
 	allFiles: "{{ HTML ALL FILES }}",
@@ -19,7 +25,7 @@ export const HTML_CONSTANTS = {
 	style: "{{ CSS STYLE }}"
 };
 
-export const EXCLUDE = ["node_modules", ".git", ".obsidian", ".github"];
+export const EXCLUDE = ["node_modules", ".git", ".obsidian", ".github", "dist"];
 export const FILE_FORMAT = ".md";
 
 export const mapObject = <T, K extends { [key: string]: unknown }>(
@@ -87,7 +93,7 @@ export const ulMapObject = <T, K extends { [key: string]: unknown }>(
 					</span>
 					
 					<div class="dropdown_content" style="display: none; margin: 0 0 0 0.5em;" id="${key.replaceAll("\\", "/")}">
-						${ulMapObject<T, K>(<K>object[key], func, `${key}/`.replaceAll("\\", "/"))}\n
+						${ulMapObject<T, K>(<K>object[key], func, `${key}`.replaceAll("\\", "/"))}\n
 					</div>
 				</div>
 			`;

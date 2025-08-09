@@ -1,0 +1,354 @@
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/style.css">
+		<title>Начало - вступление</title>
+	</head>
+	<body>
+		<script src="https://unpkg.com/shiki@0.9.10/dist/index.unpkg.iife.js"></script>
+
+		<button id="show_all_files">Show navigation</button>
+		<nav id="all_files">
+			<div>
+		
+			<span>
+				<a style="padding: 0 0.5em" href="D:/projects/me/type-handbook//Вступление.html">&gt;Вступление.html</a>
+			</span>
+
+			
+				<div class="dropdown">
+					<span class="dropdown_summary" onclick="dropdownOnClick('docs/Начало типизации')">Начало типизации
+					</span>
+					
+					<div class="dropdown_content" style="display: none; margin: 0 0 0 0.5em;" id="docs/Начало типизации">
+						
+			<span>
+				<a style="padding: 0 0.5em" href="D:/projects/me/type-handbook/docs/Начало%20типизации/Дженерики%20(Generics).html">&gt;Дженерики (Generics).html</a>
+			</span>
+
+			
+			<span>
+				<a style="padding: 0 0.5em" href="D:/projects/me/type-handbook/docs/Начало%20типизации/Ежедневные%20типы.html">&gt;Ежедневные типы.html</a>
+			</span>
+
+			
+			<span>
+				<a style="padding: 0 0.5em" href="D:/projects/me/type-handbook/docs/Начало%20типизации/Начало%20-%20вступление.html">&gt;Начало - вступление.html</a>
+			</span>
+
+			
+			<span>
+				<a style="padding: 0 0.5em" href="D:/projects/me/type-handbook/docs/Начало%20типизации/Создание%20своих%20типов.html">&gt;Создание своих типов.html</a>
+			</span>
+
+			
+			<span>
+				<a style="padding: 0 0.5em" href="D:/projects/me/type-handbook/docs/Начало%20типизации/Типы%20в%20функциях.html">&gt;Типы в функциях.html</a>
+			</span>
+
+			
+
+					</div>
+				</div>
+			
+    </div>
+		</nav>
+		
+		<div id="root">
+			<h1 id="">Возможные типы</h1>
+<ul>
+<li><code>string</code></li>
+<li><code>number</code></li>
+<li><code>bigint</code></li>
+<li><code>any</code></li>
+<li><code>unknown</code></li>
+<li><code>object</code></li>
+<li><code>undefined</code></li>
+<li><code>null</code></li>
+<li><code>void</code></li>
+<li><code>never</code></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/2/basic-types.html">and other…</a></li>
+</ul>
+<h1 id="-1">Стандартная типизация</h1>
+<h3 id="-2">Типы в переменных</h3>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #8B949E">// ! - Об этом поговорим попозже</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">alpha</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">any</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">"some-value"</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">beta</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">number</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">50</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">gamma</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">"Hello, World"</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">epsilon</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">object</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span><span style="color: #FF7B72">...</span><span style="color: #C9D1D9">}; </span><span style="color: #8B949E">// !</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">delta</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> [] </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> []; </span><span style="color: #8B949E">// !</span></span>
+<span class="line"><span style="color: #8B949E">// etc...</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<h3 id="-3">Типы в функциях</h3>
+<p>Больше Вы узнаете в <a href="./Типы%20в%20функциях.html">Типы в функциях</a></p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #8B949E">// Стандартная функция на js</span></span>
+<span class="line"><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">printHello</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">name</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"Hello, "</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> name);</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E">// Рассмотрим функции на ts</span></span>
+<span class="line"><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">printHello2</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">name</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">)</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">void</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"Hello, "</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">+</span><span style="color: #C9D1D9"> name);</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E">// Указание типов для аргументов в функции идёт после двоеточия, как в переменных.</span></span>
+<span class="line"><span style="color: #8B949E">// Чтобы указать тип, который возвращает функция, то ставим двоеточие после круглых скобок.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #8B949E">// Рассмотрим другую функцию</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">otherFunc</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> (</span><span style="color: #FFA657">num</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">number</span><span style="color: #C9D1D9">)</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">void</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    console.</span><span style="color: #D2A8FF">log</span><span style="color: #C9D1D9">(num);</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<h3 id="-4">Использование нескольких типов</h3>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">let</span><span style="color: #C9D1D9"> alpha</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">number</span><span style="color: #FF7B72">|</span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">"Hello"</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">beta</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">number</span><span style="color: #FF7B72">|</span><span style="color: #79C0FF">string</span><span style="color: #FF7B72">|</span><span style="color: #79C0FF">any</span><span style="color: #C9D1D9">[] </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> [];</span></span>
+<span class="line"><span style="color: #C9D1D9">alpha </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">function</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">someFunc</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">data</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">number</span><span style="color: #FF7B72">|</span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">) {</span><span style="color: #FF7B72">...</span><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #D2A8FF">someFunc</span><span style="color: #C9D1D9">(aplha); </span><span style="color: #8B949E">// Нормально</span></span>
+<span class="line"><span style="color: #D2A8FF">someFunc</span><span style="color: #C9D1D9">(beta); </span><span style="color: #8B949E">// Ошибка: тип any[] не может быть назначен для типа number; тип any[] не может быть назначен для типа string</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<p>Также есть пересечения типов (Через знак <code>&amp;</code>), но о них поговорим позже.</p>
+<h3 id="-5">Типы в классах</h3>
+<p>Типизация в классах ничем почти не отличается от типизации в функциях/переменных. Просто смотрите:</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">class</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">MyClass</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">private</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">_some_value</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">public</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">constuctor</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">someValue</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #79C0FF">this</span><span style="color: #C9D1D9">._some_value </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> someValue;</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">public</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">getSomeValue</span><span style="color: #C9D1D9">()</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">this</span><span style="color: #C9D1D9">._some_value;</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">public</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">getSomeValue2</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> ()</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=&gt;</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">this</span><span style="color: #C9D1D9">._some_value;</span></span>
+<span class="line"><span style="color: #C9D1D9">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">public</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">set</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">someValue</span><span style="color: #C9D1D9">(</span><span style="color: #FFA657">value</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">) {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #79C0FF">this</span><span style="color: #C9D1D9">._some_value </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> value;</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">public</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">get</span><span style="color: #C9D1D9"> </span><span style="color: #D2A8FF">someValue</span><span style="color: #C9D1D9">()</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">        </span><span style="color: #FF7B72">return</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">this</span><span style="color: #C9D1D9">._some_value;</span></span>
+<span class="line"><span style="color: #C9D1D9">    }</span></span>
+<span class="line"><span style="color: #C9D1D9">}</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<p>Думаю, что тут не стоит что-то рассказывать, итак всё видно и ясно.</p>
+<h1 id="-6">Типизация массивов</h1>
+<p>Я специально выделю это в отдельный слот, также будет отдельный слот для объектов и Map.
+Объявления типа массива можно сделать двумя способами, рассмотрим на примере <code>string</code></p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">usernames</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">[] </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> [</span></span>
+<span class="line"><span style="color: #C9D1D9">   </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">   </span><span style="color: #A5D6FF">"Valentin Bird"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">   </span><span style="color: #A5D6FF">"Adelya"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">   </span><span style="color: #A5D6FF">"beyz1k"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">   </span><span style="color: #A5D6FF">"Omonillo"</span></span>
+<span class="line"><span style="color: #C9D1D9">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">usernames2</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Array</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> [</span></span>
+<span class="line"><span style="color: #C9D1D9">   </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">   </span><span style="color: #A5D6FF">"Valentin Bird"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">   </span><span style="color: #A5D6FF">"Adelya"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">   </span><span style="color: #A5D6FF">"beyz1k"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">   </span><span style="color: #A5D6FF">"Omonillo"</span></span>
+<span class="line"><span style="color: #C9D1D9">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">usernames3</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #FFA657">key</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">number</span><span style="color: #C9D1D9">]</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span></span>
+<span class="line"><span style="color: #C9D1D9">} </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> [</span><span style="color: #FF7B72">...</span><span style="color: #C9D1D9">]; </span><span style="color: #8B949E">// Насчёт этого варианта поговорим позже, когда затроним объекты</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #C9D1D9">    </span><span style="color: #8B949E">// Проверка массива</span></span>
+<span class="line"><span style="color: #FF7B72">type</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">MaybeArray</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">|</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">[]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">foo</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #A5D6FF">""</span><span style="color: #C9D1D9">;</span></span>
+<span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">bar</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> [];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #79C0FF">Array</span><span style="color: #C9D1D9">.</span><span style="color: #D2A8FF">isArray</span><span style="color: #C9D1D9">(foo) </span><span style="color: #8B949E">// false</span></span>
+<span class="line"><span style="color: #79C0FF">Array</span><span style="color: #C9D1D9">.</span><span style="color: #D2A8FF">isArray</span><span style="color: #C9D1D9">(bar) </span><span style="color: #8B949E">// true</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<p>Что первый, что второй вариант одинаковы, однако второй вариант я обычно не использую. Лично я считаю, что он немного большой и не удобный, однако другим людям виднее, особенно Вам. Я рекомендую использовать первый вариант.
+Что насчёт стрелок (<code>&lt;</code> и <code>&gt;</code>), это дженерик, я про них потом ещё поговорю, сейчас это немного рано.</p>
+<h1 id="-7">Типизация объектов</h1>
+<p>Типизация объектов иногда сложна для понимания, сразу скажу, что я не рекомендую использовать тип <code>object</code>. Так как этим типом обладают большинство вещей в TypeScript. К примеру, функция, массив, Map и другие вещи имеют тип <code>object</code>.
+Тогда как же типизировать объекты? — Через <code>{}</code>, сейчас покажу на примере:</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">mebers</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #FFA657">key</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">]</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span></span>
+<span class="line"><span style="color: #C9D1D9">} </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    FOCKUSTY: </span><span style="color: #A5D6FF">"ceo"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">"Valentin Bird"</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"teamlead"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    Adelya: </span><span style="color: #A5D6FF">"manager"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    beyz1k: </span><span style="color: #A5D6FF">"promoter"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    Omonillo: </span><span style="color: #A5D6FF">"promoter"</span></span>
+<span class="line"><span style="color: #C9D1D9">};</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<p>Что значит <code>[key: string]</code>? — Думаю, что некоторые уже поняли, однако я всё равно объясню. В квадратные скобки мы ставим значения ключа, то есть определяем, какой тип может быть ключом в данном объекте. Не рекомендую ставить что-то кроме строкового значения. Но рассмотрим и другие примеры.</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">users</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #FFA657">key</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">number</span><span style="color: #C9D1D9">]</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span></span>
+<span class="line"><span style="color: #C9D1D9">} </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> [</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">"Valentin Bird"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">"Adelya"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">"beyz1k"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #A5D6FF">"Omonillo"</span></span>
+<span class="line"><span style="color: #C9D1D9">];</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<p>Итак… Как это у нас объект превратился в массив? — Всё просто, ключами в массиве являются числовые значения (индексы), так что вот так вот и получается. Да, можно написать и по-другому:</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">users</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #FFA657">key</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">number</span><span style="color: #C9D1D9">]</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">string</span></span>
+<span class="line"><span style="color: #C9D1D9">} </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> {</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">1</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #79C0FF">2</span><span style="color: #C9D1D9">: </span><span style="color: #A5D6FF">"Adelya"</span><span style="color: #C9D1D9">,</span></span>
+<span class="line"><span style="color: #C9D1D9">    </span><span style="color: #FF7B72">...</span></span>
+<span class="line"><span style="color: #C9D1D9">}; </span><span style="color: #8B949E">// Да, мне уже лень команду расписывать</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<p>Конечно, есть и ещё варианты указать тип объекта, но мы про них поговорим позже.</p>
+<h1 id="map">Типизация Map</h1>
+<p>Думаю, что тут некоторые знают, что за <code>Map</code> такой, если нет, то загуглите, объяснять не буду.</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #FF7B72">const</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">users</span><span style="color: #FF7B72">:</span><span style="color: #C9D1D9"> </span><span style="color: #FFA657">Map</span><span style="color: #C9D1D9">&lt;</span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">, </span><span style="color: #79C0FF">string</span><span style="color: #C9D1D9">&gt; </span><span style="color: #FF7B72">=</span><span style="color: #C9D1D9"> </span><span style="color: #FF7B72">new</span><span style="color: #C9D1D9"> </span><span style="color: #79C0FF">Map</span><span style="color: #C9D1D9">([</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"ceo"</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #A5D6FF">"Valentin Bird"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"teamlead"</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #A5D6FF">"Adelya"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"manager"</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #A5D6FF">"beyz1k"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"promoter"</span><span style="color: #C9D1D9">],</span></span>
+<span class="line"><span style="color: #C9D1D9">    [</span><span style="color: #A5D6FF">"Omonillo"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"promoter"</span><span style="color: #C9D1D9">]</span></span>
+<span class="line"><span style="color: #C9D1D9">]);</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+<p>Итак, не будем обращать пока что внимания на стрелки, перейдём сразу к типам, что записаны в них.
+Первый <code>string</code> — ключ, по которому мы будем брать значения.
+Второй <code>string</code> — значение, которые мы будем получать по ключу.
+Думаю, что некоторые знают, что <code>Map</code> лучше, чем <code>object</code>, потому что в ключи можно закинуть (как я думаю) любое значение, даже массив. Однако я, всё же, рекомендую приводить ключ к типу <code>string</code>, потому что так надёжнее, как я считаю.</p>
+<pre><pre class="shiki" style="background-color: #0d1117"><code><span class="line"><span style="color: #C9D1D9">users.</span><span style="color: #D2A8FF">get</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">); </span><span style="color: #8B949E">// string ("ceo")</span></span>
+<span class="line"><span style="color: #C9D1D9">users.</span><span style="color: #D2A8FF">set</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"FOCKUSTY"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"author"</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"><span style="color: #C9D1D9">users.</span><span style="color: #D2A8FF">set</span><span style="color: #C9D1D9">(</span><span style="color: #A5D6FF">"Adelya"</span><span style="color: #C9D1D9">, </span><span style="color: #A5D6FF">"ceo"</span><span style="color: #C9D1D9">);</span></span>
+<span class="line"></span></code></pre><div class="copy">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div></pre>
+		</div>
+
+		<div id="copy-element" style="display: none;">
+			<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2"></path><path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"></path></g></svg>
+		</div>
+
+		<div id="copy-div" style="position: fixed; display: none; transition: 0.3s; width: 100%; text-align: center;">copiend!</div>
+
+		<script>
+			const copyDiv = document.getElementById("copy-div");
+			
+			document.querySelectorAll("code").forEach(element => {
+				copyDiv.style.bottom = "0";
+			  
+				const parent = element.getBoundingClientRect();
+				
+				element.onclick = () => {
+					if (element.parentElement.className === "shiki") return;
+
+					copyDiv.style.display = "block";
+					copyDiv.style.transition = "0.5s";
+
+					copyDiv.style.opacity = "1";
+
+					setTimeout(() => {
+						copyDiv.style.opacity = "0";
+
+						setTimeout(() => {
+							copyDiv.style.display = "none";
+							copyDiv.style.transition = "0s";
+						}, 300);
+					}, 300);
+
+					navigator.clipboard.writeText(element.innerText);
+				}
+			})
+		</script>
+
+		<script>
+			const dropdownOnClick = (id) => {
+				const element = document.getElementById(`${id}`);
+				element.style.display = element.style.display === "none"
+					? "flex" : "none";
+			}
+		</script>
+
+		<script>
+			document.getElementById("show_all_files").onclick = (event) => {
+				if (
+					document.getElementById("show_all_files").innerText ===
+					"Hide navigation"
+				) {
+					document.getElementById("show_all_files").innerText =
+						"Show navigation";
+					document.getElementById("all_files").style.display = "none";
+				} else {
+					document.getElementById("show_all_files").innerText =
+						"Hide navigation";
+					document.getElementById("all_files").style.display = "block";
+				}
+			};
+		</script>
+
+		<script>
+			const copy = document.getElementById("copy-element");
+
+			shiki
+				.getHighlighter({
+					theme: matchMedia("(prefers-color-scheme: light)").matches
+						? "github-light"
+						: "github-dark"
+				})
+				.then((highlighter) => {
+					document.querySelectorAll("pre").forEach((element) => {
+						const div = document.createElement("div")
+						
+						div.className = "copy";
+						div.innerHTML = copy.innerHTML;
+
+						const language = element.dataset.lang || "js";
+						const code = highlighter.codeToHtml(element.innerText, language);
+
+						div.onclick = () => {
+							copyDiv.style.display = "block";
+							copyDiv.style.transition = "0.5s";
+
+							copyDiv.style.opacity = "1";
+
+							setTimeout(() => {
+								copyDiv.style.opacity = "0";
+
+								setTimeout(() => {
+									copyDiv.style.display = "none";
+									copyDiv.style.transition = "0s";
+								}, 300);
+							}, 300);
+
+							navigator.clipboard.writeText(element.innerText);
+						}
+
+						element.innerHTML = code;
+						element.appendChild(div);
+					});
+				});
+		</script>
+	
+</body>

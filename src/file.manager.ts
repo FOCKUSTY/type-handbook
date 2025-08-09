@@ -2,14 +2,14 @@ import { existsSync, readdirSync, readFileSync, rmSync } from "node:fs";
 
 import {
 	resolvePath as resolve,
-	mapObject,
 	EXCLUDE,
 	FILE_FORMAT,
-	URL_PREFIX,
-	ulMapObject
+	ulMapObject,
+	INPUT_DIR,
 } from "./constants.js";
 
 import showdown from "showdown";
+
 const converter = new showdown.Converter();
 
 type Dirs = {
@@ -21,7 +21,7 @@ export class FileManager {
 	private readonly _paths: string[];
 
 	public constructor(
-		public readonly dir: string = "./",
+		public readonly dir: string = "./docs",
 		public readonly format: string = FILE_FORMAT
 	) {
 		this._dirs = {};
@@ -48,6 +48,7 @@ export class FileManager {
 				dirs[folderPath] = this.readDirWithDirs(folderPath);
 			} catch (err) {
 				if (!file.endsWith(this.format)) continue;
+
 				dirs[file] = file;
 			}
 		}
@@ -91,7 +92,7 @@ export class FileManager {
 		const dirs = this.readDirWithDirs();
 
 		const data = ulMapObject<string, Dirs>(dirs, ({ value, prefix }) => {
-			return `${prefix}${value}`.replace(".md", ".html");
+			return `${prefix}/${value}`.replace(".md", ".html");
 		});
 
 		return `<div>

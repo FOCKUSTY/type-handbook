@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export const INPUT_DIR = join(__dirname, "../");
-export const URL_PREFIX = process.env.URL_PREFIX || INPUT_DIR;
+export const URL_PREFIX = process.env.URL_PREFIX ||  "https://fockusty.github.io/type-handbook/";
 
 export const resolvePath = (path: string, ...paths: string[]) => join(path, ...paths);
 export const parseUrl = (url: string) => (

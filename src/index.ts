@@ -14,7 +14,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 import { getHighlighter } from "shiki";
-import { INPUT_DIR } from "./constants.js";
+import { INPUT_DIR, URL_PREFIX } from "./constants.js";
 
 const css = fs.readFileSync(path.join(__dirname, "../", "utils", "style.css"), "utf8");
 
@@ -53,7 +53,7 @@ const css = fs.readFileSync(path.join(__dirname, "../", "utils", "style.css"), "
 				new HtmlManager(file, paths[index], highlighter).generateHtml((html) => {
 					return html
 						.replaceAll(new RegExp('(?:\\<link rel\\=\\"stylesheet\\" href\\=\\".*\\"\\>)', "g"), `<style>\n${css}\n</style>`)
-						// .replaceAll("<a href=\"/", "<a href=\"/" + __dirname.replaceAll("\\", "/") + "/")
+						.replaceAll("href=\"/", "href=" + URL_PREFIX)
 				})
 			)
 		}

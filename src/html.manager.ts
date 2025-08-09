@@ -79,6 +79,7 @@ export class HtmlManager {
 				`${this.rawHtml}`
 			)
 			.replace(HTML_CONSTANTS.allFiles, this.fileManager.getAllHtmlFilesInLinks())
+			.replaceAll("href=\"/", "href=\""+ URL_PREFIX)
 			.replaceAll(".md", ".html")
 			.trim();
 	}

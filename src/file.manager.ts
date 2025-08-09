@@ -6,6 +6,7 @@ import {
 	FILE_FORMAT,
 	ulMapObject,
 	INPUT_DIR,
+	URL_PREFIX,
 } from "./constants.js";
 
 import showdown from "showdown";
@@ -92,6 +93,10 @@ export class FileManager {
 		const dirs = this.readDirWithDirs();
 
 		const data = ulMapObject<string, Dirs>(dirs, ({ value, prefix }) => {
+			if (prefix === "") {
+				return ("docs/" + value).replaceAll(".md", ".html");
+			}
+
 			return `${prefix}/${value}`.replace(".md", ".html");
 		});
 
